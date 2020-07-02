@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<script>
+  function submit() {
+    const userInput = document.getElementById("usename");
+    const passwards = document.getElementById("mima");
+    const inputData = { userName: userInput.value, passwards: passwards.value };
+      const request = new XMLHttpRequest();
+      request.open("post", 'http://localhost:9000/login', true);
+      request.setRequestHeader("Content-Type", "application/json");
+      request.withCredentials = true
+      const data = JSON.stringify(inputData);
+      request.onload = function(){
+          console.log(request.responseText);
+      }
+      request.send(data);
+    }
+</script>
+<body>
+  <div>
+    <span>用户名 </span><input id="usename" type="text"><br>
+    <span>密  码  </span><input type="text" id="mima">
+    <button onclick="submit()">提交</button>
+  </div>
+</body>
+</html>

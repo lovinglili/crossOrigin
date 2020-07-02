@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>Document</title>
+</head>
+<body>
+  <iframe id="inlineFrameExample"
+    title="Inline Frame Example"
+    width="100%"
+    height="600"
+    src="http://localhost2.frame.com:9001/iframe2.html">
+    
+  </iframe>
+  <!-- <a onclick="parent2();" href="#" id="aaa">child</a> -->
+  <script>
+    // // const parant = window.parent.document.body();
+    const iframe = document.getElementById('inlineFrameExample');
+    document.domain = 'frame.com';
+    // // console.log(document.domain,'document.domain')
+    iframe.onload = function(){
+      var apigateway = iframe.contentWindow.document;
+      console.log(apigateway)
+    }
+    // function parent2() {
+    //   var parentWindow = window.parent;
+    //   console.log('parent', parentWindow)
+    // }
+  </script>
+</body>
+</html>
